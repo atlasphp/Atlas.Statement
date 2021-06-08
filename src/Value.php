@@ -14,13 +14,16 @@ use PDO;
 
 class Value
 {
+    protected mixed $value;
+
+    protected int $type;
+
     public function __construct(
-        protected mixed $value,
-        protected ?int $type
+        mixed $value,
+        ?int $type
     ) {
-        if ($this->type === null) {
-            $this->fixType();
-        }
+        $this->value = $value;
+        $this->setType($type);
     }
 
     public function getValue() : mixed
@@ -38,8 +41,13 @@ class Value
         return [$this->value, $this->type];
     }
 
-    protected function fixType() : void
+    protected function setType(?int $type) : void
     {
+        if ($type !== null) {
+            $this->type = $type;
+            return;
+        }
+
         if (is_null($this->value)) {
             $this->type = PDO::PARAM_NULL;
             return;
