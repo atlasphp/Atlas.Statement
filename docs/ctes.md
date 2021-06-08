@@ -1,7 +1,7 @@
 # Common Table Expressions
 
-Every _Statement_ supports Common Table Expressions. To add one or more
-CTE to a _Statement_, call the `with*()` methods:
+Every _Statement_ supports Common Table Expressions. To add one or more CTEs to
+a _Statement_, call its `with*()` methods:
 
 ```php
 // WITH cte_1 AS (SELECT ...)

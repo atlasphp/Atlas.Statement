@@ -67,7 +67,7 @@ $select
     ->where('bar IN ', $bar_value);
 ```
 
-Finally, if the inline value is itself a Select object, it will be converted to
+Finally, if the inline value is itself a _Statement_, it will be converted to
 a string via `getQueryString()` and returned surrounded in parentheses:
 
 ```php
