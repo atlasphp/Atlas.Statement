@@ -19,7 +19,7 @@ class Prepare
     {
         $sth = $pdo->prepare($statement->getQueryString());
 
-        foreach ($statement->getBindValues() as $name => $value) {
+        foreach ($statement->getBindValueObjects() as $name => $value) {
             $sth->bindValue($name, $value->getValue(), $value->getType());
         }
 

@@ -1,3 +1,3 @@
-# CHange Log
+# Change Log
 
 No releases yet.

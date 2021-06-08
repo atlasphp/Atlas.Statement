@@ -65,7 +65,7 @@ class With extends Component
         }
 
         if ($statement instanceof Statement) {
-            $this->bind->merge($statement->getBindValues());
+            $this->bind->merge($statement->getBindValueObjects());
             $statement = $statement->getQueryString();
         }
 

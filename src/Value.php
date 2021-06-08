@@ -25,10 +25,6 @@ class Value
 
     public function getValue() : mixed
     {
-        if ($this->type === PDO::PARAM_BOOL && is_bool($this->value)) {
-            return $this->value ? '1' : '0';
-        }
-
         return $this->value;
     }
 

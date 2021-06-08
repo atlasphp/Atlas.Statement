@@ -24,7 +24,7 @@ class From extends Component
     public function table(string|Statement $ref) : void
     {
         if ($ref instanceof Statement) {
-            $this->bind->merge($ref->getBindValues());
+            $this->bind->merge($ref->getBindValueObjects());
             $ref = $ref->getQueryString();
         }
 
@@ -39,7 +39,7 @@ class From extends Component
     ) : void
     {
         if ($ref instanceof Statement) {
-            $this->bind->merge($ref->getBindValues());
+            $this->bind->merge($ref->getBindValueObjects());
             $ref = $ref->getQueryString();
         }
 

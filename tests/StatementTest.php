@@ -41,10 +41,6 @@ abstract class StatementTest extends \PHPUnit\Framework\TestCase
         return new $class(new FakeDriver());
     }
 
-    protected function assertSameSql($expect, $actual)
-    {
-    }
-
     protected function assertQueryString(string $expect, Statement $statement)
     {
         $actual = $statement->getQueryString();
@@ -89,12 +85,6 @@ abstract class StatementTest extends \PHPUnit\Framework\TestCase
 
     protected function assertBindValues(array $expect, Statement $statement)
     {
-        $actual = [];
-
-        foreach ($statement->getBindValues() as $name => $value) {
-            $actual[$name] = $value->asArray();
-        }
-
-        $this->assertSame($expect, $actual);
+        $this->assertSame($expect, $statement->getBindValueArrays());
     }
 }

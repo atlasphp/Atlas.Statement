@@ -73,9 +73,20 @@ abstract class Statement
         return $this;
     }
 
-    public function getBindValues() : array
+    public function getBindValueObjects() : array
     {
-        return $this->bind->getArrayCopy();
+        return $this->bind->getValues();
+    }
+
+    public function getBindValueArrays() : array
+    {
+        $values = [];
+
+        foreach ($this->bind->getValues() as $name => $value) {
+            $values[$name] = [$value->getValue(), $value->getType()];
+        }
+
+        return $values;
     }
 
     public function setFlag(string $flag, bool $enable = true) : void

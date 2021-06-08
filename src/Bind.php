@@ -61,7 +61,7 @@ class Bind
         }
     }
 
-    public function getArrayCopy() : array
+    public function getValues() : array
     {
         return $this->values;
     }
@@ -74,7 +74,7 @@ class Bind
     public function inline(mixed $value, ?int $type = null) : string
     {
         if ($value instanceof Statement) {
-            $this->values += $value->getBindValues();
+            $this->values += $value->getBindValueObjects();
             return '(' . $value->getQueryString() . ')';
         }
 
