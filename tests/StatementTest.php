@@ -83,6 +83,19 @@ abstract class StatementTest extends \PHPUnit\Framework\TestCase
         $this->assertBindValues($expect, $this->statement);
     }
 
+    public function testBindValue()
+    {
+        $this->assertBindValues([], $this->statement);
+
+        $this->statement->bindValue('foo', '1', PDO::PARAM_INT);
+
+        $expect = [
+            'foo' => ['1', PDO::PARAM_INT],
+        ];
+
+        $this->assertBindValues($expect, $this->statement);
+    }
+
     protected function assertBindValues(array $expect, Statement $statement)
     {
         $this->assertSame($expect, $statement->getBindValueArrays());

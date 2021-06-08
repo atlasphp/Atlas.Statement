@@ -34,11 +34,6 @@ class Value
         return $this->type;
     }
 
-    public function asArray() : array
-    {
-        return [$this->value, $this->type];
-    }
-
     protected function setType(?int $type) : void
     {
         if ($type !== null) {
