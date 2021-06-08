@@ -1,0 +1,55 @@
+{
+    "name": "atlas/statement",
+    "type": "library",
+    "description": "Object-oriented statement builders for MySQL, Postgres, SQLite, and SQLServer.",
+    "keywords": [
+        "mysql",
+        "pdo",
+        "pgsql",
+        "postgres",
+        "postgresql",
+        "sqlite",
+        "sql server",
+        "sqlserver",
+        "query",
+        "statement",
+        "select",
+        "insert",
+        "update",
+        "delete",
+        "db",
+        "database",
+        "sql",
+        "dml"
+    ],
+    "homepage": "https://github.com/atlasphp/Atlas.Statement",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Atlas.Statement Contributors",
+            "homepage": "https://github.com/atlasphp/Atlas.Statement/contributors"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "pds/skeleton": "~1.0",
+        "phpunit/phpunit": "~9.0",
+        "phpstan/phpstan": "^0.12.82"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atlas\\Statement\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atlas\\Statement\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit",
+        "stan": "./vendor/bin/phpstan analyze -c phpstan.neon src"
+    }
+}
