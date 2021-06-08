@@ -18,10 +18,8 @@ class Value
 
     protected int $type;
 
-    public function __construct(
-        mixed $value,
-        ?int $type
-    ) {
+    public function __construct(mixed $value, ?int $type)
+    {
         $this->value = $value;
         $this->setType($type);
     }
