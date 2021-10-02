@@ -47,7 +47,29 @@ class UpdateTest extends StatementTest
             'foo' => ['bar', PDO::PARAM_STR],
             'baz' => ['dib', PDO::PARAM_STR],
         );
+
         $this->assertBindValues($expect, $this->statement);
+
+        // add LIMIT
+        $this->statement->limit(10)
+                    ->offset(20);
+
+        $expect = "
+            UPDATE t1
+            SET
+                <<c1>> = :c1,
+                <<c2>> = :c2,
+                <<c3>> = :c3,
+                <<c4>> = NULL,
+                <<c5>> = NOW()
+            WHERE
+                foo = :foo
+                AND baz = :baz
+                OR zim = gir
+            LIMIT 10 OFFSET 20
+        ";
+
+        $this->assertQueryString($expect, $this->statement);
 
         // add RETURNING
         $this->statement->returning('c1', 'c2')
@@ -65,6 +87,7 @@ class UpdateTest extends StatementTest
                 foo = :foo
                 AND baz = :baz
                 OR zim = gir
+            LIMIT 10 OFFSET 20
             RETURNING
                 c1,
                 c2,

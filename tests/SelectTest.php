@@ -383,6 +383,7 @@ class SelectTest extends StatementTest
                 'bar' => null,
                 'baz' => 'baz_value',
                 'dib = NOW()',
+                'gir' => []
             ]);
 
         $expect = '
@@ -393,6 +394,7 @@ class SelectTest extends StatementTest
                 AND bar IS NULL
                 AND baz = :_1_4_
                 AND dib = NOW()
+                AND FALSE
         ';
 
         $this->assertQueryString($expect, $this->statement);

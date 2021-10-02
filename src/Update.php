@@ -34,6 +34,7 @@ class Update extends Statement
             . ' ' . $this->table
             . $this->columns->build()
             . $this->where->build()
+            . $this->limit->build()
             . $this->returning->build();
     }
 }
