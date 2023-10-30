@@ -56,7 +56,7 @@ class InsertTest extends StatementTest
 
     public function testGetTable(){
         $this->statement->into('t1');
-        $actual = $this->statement->getTable();
+        $actual = $this->getTable();
         $this->assertSame('t1', $actual);
     }
 }
