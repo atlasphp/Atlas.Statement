@@ -23,7 +23,7 @@ class Insert extends Statement
         return $this;
     }
 
-    public function get_table() : string
+    public function getTable() : string
     {
         return $this->table;
     }
