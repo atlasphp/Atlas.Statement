@@ -23,6 +23,11 @@ class Insert extends Statement
         return $this;
     }
 
+    public function get_table() : string
+    {
+        return $this->table;
+    }
+    
     public function getQueryString() : string
     {
         return $this->with->build()
