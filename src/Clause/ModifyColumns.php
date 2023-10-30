@@ -51,12 +51,4 @@ trait ModifyColumns
         $this->columns = new $class($this->bind, $this->driver);
         return $this;
     }
-<<<<<<< HEAD
-
-    public function getColumns() : array
-    {
-        return $this->columns->getList();
-    }
-=======
->>>>>>> parent of 1add7d2 (Update ModifyColumns.php)
 }

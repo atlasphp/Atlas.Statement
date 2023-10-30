@@ -44,11 +44,4 @@ abstract class ModifyColumns extends Component
         $this->list[$column] = $value;
         $this->bind->remove($column);
     }
-
-    public function getList() : array
-    {
-        return $this->list;
-    }
-    
-
 }
