@@ -44,12 +44,12 @@ However, you will not be able to specify a particular PDO parameter type when
 doing do.
 
 Bound values are automatically quoted and escaped; in some cases, this will be
-inappropriate, so you can use the `raw()` method to set column to an unquoted
+inappropriate, so you can use the `set()` method to set column to an unquoted
 and unescaped expression.
 
 ```php
 // INSERT INTO foo (bar) VALUES (NOW())
-$insert->raw('bar', 'NOW()');
+$insert->set('bar', 'NOW()');
 ```
 
 ### RETURNING
