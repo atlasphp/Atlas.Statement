@@ -44,12 +44,12 @@ However, you will not be able to specify a particular PDO parameter type when
 doing do.
 
 Bound values are automatically quoted and escaped; in some cases, this will be
-inappropriate, so you can use the `raw()` method to set column to an unquoted
+inappropriate, so you can use the `set()` method to set column to an unquoted
 and unescaped expression.
 
 ```pho
 // UPDATE foo SET bar = NOW()
-$update->raw('bar', 'NOW()');
+$update->set('bar', 'NOW()');
 ```
 ### WHERE
 
