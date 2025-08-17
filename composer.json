@@ -1,7 +1,7 @@
 {
     "name": "atlas/statement",
     "type": "library",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "description": "Object-oriented statement builders for MySQL, Postgres, SQLite, and SQLServer.",
     "keywords": [
         "mysql",
