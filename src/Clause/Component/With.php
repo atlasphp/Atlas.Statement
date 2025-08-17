@@ -24,15 +24,8 @@ class With extends Component
      */
     protected array $ctes = [];
 
-    /**
-     * @var bool
-     */
     protected bool $recursive = false;
 
-    /**
-     * @param Bind   $bind
-     * @param Driver $driver
-     */
     public function __construct(protected Bind $bind, protected Driver $driver)
     {
     }
@@ -49,19 +42,11 @@ class With extends Component
         $this->ctes[$name] = [$columns, $statement];
     }
 
-    /**
-     * @param bool $recursive
-     *
-     * @return void
-     */
     public function setRecursive(bool $recursive) : void
     {
         $this->recursive = $recursive;
     }
 
-    /**
-     * @return string
-     */
     public function build() : string
     {
         if (empty($this->ctes)) {

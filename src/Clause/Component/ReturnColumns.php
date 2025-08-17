@@ -26,9 +26,6 @@ class ReturnColumns extends Component
         }
     }
 
-    /**
-     * @return string
-     */
     public function build() : string
     {
         if (empty($this->list)) {

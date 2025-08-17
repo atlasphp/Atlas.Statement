@@ -12,26 +12,14 @@ namespace Atlas\Statement\Clause;
 
 trait Returning
 {
-    /**
-     * @var Component\ReturnColumns
-     */
     protected Component\ReturnColumns $returning;
 
-    /**
-     * @param string $expr
-     * @param string ...$exprs
-     *
-     * @return $this
-     */
     public function returning(string $expr, string ...$exprs) : static
     {
         $this->returning->add($expr, ...$exprs);
         return $this;
     }
 
-    /**
-     * @return $this
-     */
     public function resetReturning() : static
     {
         $this->returning = new Component\ReturnColumns();

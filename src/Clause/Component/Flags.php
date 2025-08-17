@@ -17,12 +17,6 @@ class Flags extends Component
      */
     protected array $list = [];
 
-    /**
-     * @param string $flag
-     * @param bool   $enable
-     *
-     * @return void
-     */
     public function set(string $flag, bool $enable = true) : void
     {
         if ($enable) {
@@ -32,17 +26,11 @@ class Flags extends Component
         }
     }
 
-    /**
-     * @return array
-     */
     public function get() : array
     {
         return array_keys($this->list);
     }
 
-    /**
-     * @return string
-     */
     public function build() : string
     {
         if (empty($this->list)) {

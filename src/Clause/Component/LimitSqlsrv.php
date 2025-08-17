@@ -12,9 +12,6 @@ namespace Atlas\Statement\Clause\Component;
 
 class LimitSqlsrv extends Limit
 {
-    /**
-     * @return string
-     */
     public function buildEarly() : string
     {
         if ($this->limit > 0 && $this->offset == 0) {
@@ -24,9 +21,6 @@ class LimitSqlsrv extends Limit
         return '';
     }
 
-    /**
-     * @return string
-     */
     public function build() : string
     {
         if ($this->limit > 0 && $this->offset > 0) {

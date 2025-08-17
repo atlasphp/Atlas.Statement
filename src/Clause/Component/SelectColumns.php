@@ -17,12 +17,6 @@ class SelectColumns extends Component
      */
     protected array $list = [];
 
-    /**
-     * @param string $expr
-     * @param string ...$exprs
-     *
-     * @return void
-     */
     public function add(string $expr, string ...$exprs) : void
     {
         $this->list[] = $expr;
@@ -32,17 +26,11 @@ class SelectColumns extends Component
         }
     }
 
-    /**
-     * @return bool
-     */
     public function hasAny() : bool
     {
         return ! empty($this->list);
     }
 
-    /**
-     * @return string
-     */
     public function build() : string
     {
         return $this->indentCsv($this->list);

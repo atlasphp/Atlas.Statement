@@ -17,25 +17,14 @@ class Delete extends Statement
     use Clause\Limit;
     use Clause\Returning;
 
-    /**
-     * @var string
-     */
     protected string $table = '';
 
-    /**
-     * @param string $table
-     *
-     * @return $this
-     */
     public function from(string $table) : static
     {
         $this->table = $table;
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getQueryString() : string
     {
         return $this->with->build()
