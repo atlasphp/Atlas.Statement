@@ -12,12 +12,22 @@ namespace Atlas\Statement\Clause\Component;
 
 abstract class Component
 {
+    /**
+     * @param array $list
+     *
+     * @return string
+     */
     public function indentCsv(array $list) : string
     {
         return PHP_EOL . '    '
              . implode(',' . PHP_EOL . '    ', $list);
     }
 
+    /**
+     * @param array $list
+     *
+     * @return string
+     */
     public function indent(array $list) : string
     {
         if (empty($list)) {
@@ -28,5 +38,8 @@ abstract class Component
              . implode(PHP_EOL . '    ', $list);
     }
 
+    /**
+     * @return string
+     */
     abstract public function build() : string;
 }

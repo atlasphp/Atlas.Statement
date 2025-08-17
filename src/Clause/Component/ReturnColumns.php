@@ -12,6 +12,9 @@ namespace Atlas\Statement\Clause\Component;
 
 class ReturnColumns extends Component
 {
+    /**
+     * @var array<array-key, string>
+     */
     protected array $list = [];
 
     public function add(string $expr, string ...$exprs) : void
@@ -23,6 +26,9 @@ class ReturnColumns extends Component
         }
     }
 
+    /**
+     * @return string
+     */
     public function build() : string
     {
         if (empty($this->list)) {

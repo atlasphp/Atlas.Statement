@@ -14,26 +14,54 @@ use Atlas\Statement\Driver\Driver;
 use Atlas\Statement\Bind;
 use Atlas\Statement\Statement;
 
+/**
+ * @phpstan-type cteType = array<string, array<array-key, string[]|string|Statement>>
+ */
 class With extends Component
 {
+    /**
+     * @var cteType
+     */
     protected array $ctes = [];
 
+    /**
+     * @var bool
+     */
     protected bool $recursive = false;
 
+    /**
+     * @param Bind   $bind
+     * @param Driver $driver
+     */
     public function __construct(protected Bind $bind, protected Driver $driver)
     {
     }
 
+    /**
+     * @param string            $name
+     * @param string[]          $columns
+     * @param string|Statement  $statement
+     *
+     * @return void
+     */
     public function setCte(string $name, array $columns, mixed $statement) : void
     {
         $this->ctes[$name] = [$columns, $statement];
     }
 
+    /**
+     * @param bool $recursive
+     *
+     * @return void
+     */
     public function setRecursive(bool $recursive) : void
     {
         $this->recursive = $recursive;
     }
 
+    /**
+     * @return string
+     */
     public function build() : string
     {
         if (empty($this->ctes)) {
@@ -43,7 +71,11 @@ class With extends Component
         $ctes = [];
 
         foreach ($this->ctes as $name => $info) {
-            list($columns, $statement) = $info;
+            /**
+             * @var array<array-key, string> $columns
+             * @var string|Statement         $statement
+             */
+            [$columns, $statement] = $info;
             $ctes[] = $this->buildCte($name, $columns, $statement);
         }
 
@@ -52,6 +84,13 @@ class With extends Component
             . PHP_EOL;
     }
 
+    /**
+     * @param string                   $name
+     * @param array<array-key, string> $columns
+     * @param string|Statement         $statement
+     *
+     * @return string
+     */
     protected function buildCte(string $name, array $columns, string|Statement $statement) : string
     {
         $sql = $this->driver->quoteIdentifier($name);

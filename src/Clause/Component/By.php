@@ -12,15 +12,30 @@ namespace Atlas\Statement\Clause\Component;
 
 class By extends Component
 {
+    /**
+     * @var string
+     */
     protected string $type;
 
+    /**
+     * @var array<array-key, string>
+     */
     protected array $list = [];
 
+    /**
+     * @param string $type
+     */
     public function __construct(string $type)
     {
         $this->type = $type;
     }
 
+    /**
+     * @param string $expr
+     * @param string ...$exprs
+     *
+     * @return void
+     */
     public function expr(string $expr, string ...$exprs) : void
     {
         $this->list[] = $expr;
@@ -30,6 +45,9 @@ class By extends Component
         }
     }
 
+    /**
+     * @return string
+     */
     public function build() : string
     {
         if (empty($this->list)) {

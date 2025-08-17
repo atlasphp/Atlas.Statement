@@ -12,14 +12,31 @@ namespace Atlas\Statement\Clause\Component;
 
 class Limit
 {
+    /**
+     * @var int
+     */
     protected int $limit = 0;
 
+    /**
+     * @var int
+     */
     protected int $offset = 0;
 
+    /**
+     * @var int
+     */
     protected int $page = 0;
 
+    /**
+     * @var int
+     */
     protected int $perPage = 10;
 
+    /**
+     * @param int $limit
+     *
+     * @return void
+     */
     public function setLimit(int $limit) : void
     {
         $this->limit = $limit;
@@ -30,11 +47,19 @@ class Limit
         }
     }
 
+    /**
+     * @return int
+     */
     public function getLimit() : int
     {
         return $this->limit;
     }
 
+    /**
+     * @param int $offset
+     *
+     * @return void
+     */
     public function setOffset(int $offset) : void
     {
         $this->offset = $offset;
@@ -45,22 +70,38 @@ class Limit
         }
     }
 
+    /**
+     * @return int
+     */
     public function getOffset() : int
     {
         return $this->offset;
     }
 
+    /**
+     * @param int $page
+     *
+     * @return void
+     */
     public function setPage(int $page) : void
     {
         $this->page = $page;
         $this->setPagingLimitOffset();
     }
 
+    /**
+     * @return int
+     */
     public function getPage() : int
     {
         return $this->page;
     }
 
+    /**
+     * @param int $perPage
+     *
+     * @return void
+     */
     public function setPerPage(int $perPage) : void
     {
         $this->perPage = $perPage;
@@ -70,11 +111,17 @@ class Limit
         }
     }
 
+    /**
+     * @return int
+     */
     public function getPerPage() : int
     {
         return $this->perPage;
     }
 
+    /**
+     * @return void
+     */
     protected function setPagingLimitOffset() : void
     {
         $this->limit = 0;
@@ -86,11 +133,17 @@ class Limit
         }
     }
 
+    /**
+     * @return string
+     */
     public function buildEarly() : string
     {
         return '';
     }
 
+    /**
+     * @return string
+     */
     public function build() : string
     {
         $clause = '';

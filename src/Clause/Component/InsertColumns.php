@@ -12,6 +12,9 @@ namespace Atlas\Statement\Clause\Component;
 
 class InsertColumns extends ModifyColumns
 {
+    /**
+     * @return string
+     */
     public function build() : string
     {
         $quotedColumns = [];
