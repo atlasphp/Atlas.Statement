@@ -13,9 +13,16 @@ namespace Atlas\Statement;
 use Atlas\Statement\Driver\Driver;
 use Atlas\Statement\Clause\Component\Flags;
 use Atlas\Statement\Clause\Component\With;
-
+/**
+ * @phpstan-type valueArray array<string, Value>
+ */
 abstract class Statement
 {
+    /**
+     * @param string $driverName
+     *
+     * @return static
+     */
     static public function new(string $driverName) : static
     {
         $driver = 'Atlas\\Statement\\Driver\\'
@@ -25,12 +32,24 @@ abstract class Statement
         return new static(new $driver());
     }
 
+    /**
+     * @var Driver
+     */
     protected Driver $driver;
 
+    /**
+     * @var Bind
+     */
     protected Bind $bind;
 
+    /**
+     * @var Flags
+     */
     protected Flags $flags;
 
+    /**
+     * @var With
+     */
     protected With $with;
 
     public function __construct(Driver $driver)
@@ -40,6 +59,9 @@ abstract class Statement
         $this->reset();
     }
 
+    /**
+     * @return void
+     */
     public function __clone()
     {
         $vars = get_object_vars($this);
@@ -51,33 +73,63 @@ abstract class Statement
         }
     }
 
-    public function bindInline(mixed $value, int $type = null) : string
+    /**
+     * @param mixed    $value
+     * @param int|null $type
+     *
+     * @return string
+     */
+    public function bindInline(mixed $value, ?int $type = null) : string
     {
         return $this->bind->inline($value, $type);
     }
 
+    /**
+     * @param string $format
+     * @param mixed  ...$values
+     *
+     * @return string
+     */
     public function bindSprintf(string $format, mixed ...$values) : string
     {
         return $this->bind->sprintf($format, ...$values);
     }
 
-    public function bindValue(string $key, mixed $value, int $type = null) : static
+    /**
+     * @param string   $key
+     * @param mixed    $value
+     * @param int|null $type
+     *
+     * @return $this
+     */
+    public function bindValue(string $key, mixed $value, ?int $type = null) : static
     {
         $this->bind->value($key, $value, $type);
         return $this;
     }
 
+    /**
+     * @param array $values
+     *
+     * @return $this
+     */
     public function bindValues(array $values) : static
     {
         $this->bind->values($values);
         return $this;
     }
 
+    /**
+     * @return valueArray
+     */
     public function getBindValueObjects() : array
     {
         return $this->bind->getValues();
     }
 
+    /**
+     * @return array
+     */
     public function getBindValueArrays() : array
     {
         $values = [];
@@ -89,11 +141,20 @@ abstract class Statement
         return $values;
     }
 
+    /**
+     * @param string $flag
+     * @param bool   $enable
+     *
+     * @return void
+     */
     public function setFlag(string $flag, bool $enable = true) : void
     {
         $this->flags->set($flag, $enable);
     }
 
+    /**
+     * @return $this
+     */
     public function reset() : static
     {
         foreach (get_class_methods($this) as $method) {
@@ -105,40 +166,72 @@ abstract class Statement
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function resetFlags() : static
     {
         $this->flags = new Flags();
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function resetWith() : static
     {
         $this->with = new With($this->bind, $this->driver);
         return $this;
     }
 
+    /**
+     * @param string           $cteName
+     * @param string|Statement $cteStatement
+     *
+     * @return $this
+     */
     public function with(string $cteName, string|Statement $cteStatement) : static
     {
         $this->with->setCte($cteName, [], $cteStatement);
         return $this;
     }
 
+    /**
+     * @param string           $cteName
+     * @param string[]         $cteColumns
+     * @param string|Statement $cteStatement
+     *
+     * @return $this
+     */
     public function withColumns(string $cteName, array $cteColumns, string|Statement $cteStatement) : static
     {
         $this->with->setCte($cteName, $cteColumns, $cteStatement);
         return $this;
     }
 
+    /**
+     * @param bool $recursive
+     *
+     * @return $this
+     */
     public function withRecursive(bool $recursive = true) : static
     {
         $this->with->setRecursive($recursive);
         return $this;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     public function quoteIdentifier(string $name) : string
     {
         return $this->driver->quoteIdentifier($name);
     }
 
+    /**
+     * @return string
+     */
     abstract public function getQueryString() : string;
 }

@@ -15,19 +15,33 @@ class Insert extends Statement
     use Clause\ModifyColumns;
     use Clause\Returning;
 
+    /**
+     * @var string
+     */
     protected string $table = '';
 
+    /**
+     * @param string $table
+     *
+     * @return $this
+     */
     public function into(string $table) : static
     {
         $this->table = $table;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getTable() : string
     {
         return $this->table;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getQueryString() : string
     {
         return $this->with->build()
