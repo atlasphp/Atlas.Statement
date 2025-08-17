@@ -9,10 +9,11 @@
 namespace Atlas\Statement;
 
 use PDO;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Atlas\Statement\Driver\FakeDriver;
 
-abstract class StatementTest extends \PHPUnit\Framework\TestCase
+abstract class StatementTestCase extends TestCase
 {
     protected $statement;
 

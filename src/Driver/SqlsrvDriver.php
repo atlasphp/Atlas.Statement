@@ -14,11 +14,19 @@ use Atlas\Statement\Clause\Component\LimitSqlsrv;
 
 class SqlsrvDriver extends Driver
 {
+    /**
+     * @return class-string
+     */
     public function getLimitClass() : string
     {
         return LimitSqlsrv::CLASS;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     public function quoteIdentifier(string $name) : string
     {
         return "[{$name}]";

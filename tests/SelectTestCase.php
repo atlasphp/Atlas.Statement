@@ -11,7 +11,7 @@ namespace Atlas\Statement;
 use PDO;
 use Atlas\Statement\Driver\FakeDriver;
 
-class SelectTest extends StatementTest
+class SelectTestCase extends StatementTestCase
 {
     public function testDistinct()
     {

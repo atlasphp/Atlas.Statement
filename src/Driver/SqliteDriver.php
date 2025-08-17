@@ -12,6 +12,11 @@ namespace Atlas\Statement\Driver;
 
 class SqliteDriver extends Driver
 {
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     public function quoteIdentifier(string $name) : string
     {
         return '"' . $name . '"';

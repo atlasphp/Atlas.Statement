@@ -12,6 +12,11 @@ namespace Atlas\Statement\Driver;
 
 class MysqlDriver extends Driver
 {
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     public function quoteIdentifier(string $name) : string
     {
         return "`{$name}`";

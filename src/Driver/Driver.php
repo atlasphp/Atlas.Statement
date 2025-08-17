@@ -14,10 +14,18 @@ use Atlas\Statement\Clause\Component\Limit;
 
 abstract class Driver
 {
+    /**
+     * @return class-string
+     */
     public function getLimitClass() : string
     {
         return Limit::CLASS;
     }
 
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     abstract public function quoteIdentifier(string $name) : string;
 }
