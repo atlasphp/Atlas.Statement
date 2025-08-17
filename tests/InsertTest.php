@@ -10,7 +10,7 @@ namespace Atlas\Statement;
 
 use PDO;
 
-class InsertTestCase extends StatementTestCase
+class InsertTest extends StatementTestCase
 {
     public function testCommon()
     {

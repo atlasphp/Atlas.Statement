@@ -10,7 +10,7 @@ namespace Atlas\Statement;
 
 use PDO;
 
-class DeleteTestCase extends StatementTestCase
+class DeleteTest extends StatementTestCase
 {
     public function testCommon()
     {
