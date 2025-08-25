@@ -24,7 +24,7 @@ abstract class StatementTestCase extends TestCase
         $rc = new ReflectionClass(Bind::CLASS);
         $rp = $rc->getProperty('instanceCount');
         $rp->setAccessible(true);
-        $rp->setValue(0);
+        $rp->setValue(null, 0);
 
         $this->statement = $this->newStatement();
     }
