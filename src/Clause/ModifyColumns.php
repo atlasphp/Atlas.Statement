@@ -47,6 +47,7 @@ trait ModifyColumns
     public function resetColumns() : static
     {
         $type = strrchr(static::CLASS, '\\') . 'Columns';
+        /** @var class-string<Component\ModifyColumns> $class*/
         $class = __NAMESPACE__ . '\\Component' . $type;
         $this->columns = new $class($this->bind, $this->driver);
         return $this;

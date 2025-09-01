@@ -40,6 +40,7 @@ trait Limit
 
     public function resetLimit() : static
     {
+        /** @var class-string<Component\Limit> $limit*/
         $limit = $this->driver->getLimitClass();
         $this->limit = new $limit();
         return $this;

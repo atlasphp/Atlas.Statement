@@ -27,7 +27,7 @@ class Insert extends Statement
     {
         return $this->table;
     }
-    
+
     public function getQueryString() : string
     {
         return $this->with->build()
