@@ -9,10 +9,11 @@
 namespace Atlas\Statement;
 
 use PDO;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 use Atlas\Statement\Driver\FakeDriver;
 
-abstract class StatementTest extends \PHPUnit\Framework\TestCase
+abstract class StatementTestCase extends TestCase
 {
     protected $statement;
 
@@ -23,7 +24,7 @@ abstract class StatementTest extends \PHPUnit\Framework\TestCase
         $rc = new ReflectionClass(Bind::CLASS);
         $rp = $rc->getProperty('instanceCount');
         $rp->setAccessible(true);
-        $rp->setValue(0);
+        $rp->setValue(null, 0);
 
         $this->statement = $this->newStatement();
     }
