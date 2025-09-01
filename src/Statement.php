@@ -51,7 +51,7 @@ abstract class Statement
         }
     }
 
-    public function bindInline(mixed $value, int $type = null) : string
+    public function bindInline(mixed $value, ?int $type = null) : string
     {
         return $this->bind->inline($value, $type);
     }
@@ -61,7 +61,7 @@ abstract class Statement
         return $this->bind->sprintf($format, ...$values);
     }
 
-    public function bindValue(string $key, mixed $value, int $type = null) : static
+    public function bindValue(string $key, mixed $value, ?int $type = null) : static
     {
         $this->bind->value($key, $value, $type);
         return $this;
