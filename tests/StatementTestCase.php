@@ -21,17 +21,20 @@ abstract class StatementTestCase extends TestCase
     {
         parent::setUp();
 
-        $rc = new ReflectionClass(Bind::CLASS);
+        $rc = new ReflectionClass(Bind::class);
         $rp = $rc->getProperty('instanceCount');
-        $rp->setAccessible(true);
-        $rp->setValue(null, 0);
 
+        if (version_compare(PHP_VERSION, '8.1.0') < 0) {
+            $rp->setAccessible(true);
+        }
+
+        $rp->setValue(0);
         $this->statement = $this->newStatement();
     }
 
     public function testStaticNew()
     {
-        $class = substr(static::CLASS, 0, -4);
+        $class = substr(static::class, 0, -4);
         $actual = $class::new('sqlite');
         $this->assertInstanceOf($class, $actual);
     }

@@ -16,7 +16,7 @@ abstract class Driver
 {
     public function getLimitClass() : string
     {
-        return Limit::CLASS;
+        return Limit::class;
     }
 
     abstract public function quoteIdentifier(string $name) : string;

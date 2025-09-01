@@ -16,7 +16,7 @@ class SqlsrvDriver extends Driver
 {
     public function getLimitClass() : string
     {
-        return LimitSqlsrv::CLASS;
+        return LimitSqlsrv::class;
     }
 
     public function quoteIdentifier(string $name) : string
