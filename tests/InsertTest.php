@@ -54,7 +54,8 @@ class InsertTest extends StatementTestCase
         $this->assertBindValues($expect, $this->statement);
     }
 
-    public function testGetTable(){
+    public function testGetTable()
+    {
         $this->statement->into('t1');
         $actual = $this->statement->getTable();
         $this->assertSame('t1', $actual);

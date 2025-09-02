@@ -10,6 +10,12 @@ Use the `table()` method to specify the table to update.
 $update->table('foo');
 ```
 
+Use the `getTable()` method to get the table being updated.
+
+```php
+$table = $update->getTable();
+```
+
 ### Columns
 
 You can set a named placeholder and its corresponding bound value using the

@@ -48,4 +48,11 @@ class DeleteTest extends StatementTestCase
 
         $this->assertBindValues($expect, $this->statement);
     }
+
+    public function testGetTable()
+    {
+        $this->statement->from('t1');
+        $actual = $this->statement->getTable();
+        $this->assertSame('t1', $actual);
+    }
 }

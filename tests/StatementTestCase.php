@@ -28,7 +28,7 @@ abstract class StatementTestCase extends TestCase
             $rp->setAccessible(true);
         }
 
-        $rp->setValue(0);
+        $rp->setValue(null, 0);
         $this->statement = $this->newStatement();
     }
 

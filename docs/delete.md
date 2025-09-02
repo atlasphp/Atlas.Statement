@@ -10,6 +10,12 @@ Use the `from()` method to specify FROM expression.
 $delete->from('foo');
 ```
 
+Use the `getTable()` method to get the table being deleted from.
+
+```php
+$table = $delete->getTable();
+```
+
 ### WHERE
 
 (All `WHERE` methods support [implicit and sprintf() inline value binding](binding.md).)

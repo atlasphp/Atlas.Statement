@@ -10,6 +10,12 @@ Use the `into()` method to specify the table to insert into.
 $insert->into('foo');
 ```
 
+Use the `getTable()` method to get the table being inserted into.
+
+```php
+$table = $insert->getTable();
+```
+
 ### Columns
 
 You can set a named placeholder and its corresponding bound value using the

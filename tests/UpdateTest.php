@@ -104,4 +104,11 @@ class UpdateTest extends StatementTestCase
         $this->statement->columns(['c1', 'c2']);
         $this->assertTrue($this->statement->hasColumns());
     }
+
+    public function testGetTable()
+    {
+        $this->statement->table('t1');
+        $actual = $this->statement->getTable();
+        $this->assertSame('t1', $actual);
+    }
 }
